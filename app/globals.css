@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .container{
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .pulser {
+    
+        position: relative;
+      }
+      
+      .pulser::after {
+        animation: pulse 1000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
+      }
+      
+    
+      .pulser::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: blueviolet;
+        border-radius: 50%;
+        z-index: -1;
+      }
+      
+     
+    .box-animation{
+        animation: box_animation 3s ease-in-out infinite ;
+    }
+    .popUp{
+      animation: popup 0.4s  ease-in-out 1 ;
+    }
+}
+
+
+@keyframes popup{
+   0%{
+    transform: scale(0.4);
+   }
+   100%{
+    transform: scale(1);
+   }
+}
+@keyframes pulse {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.4);
+      opacity: 0.4;
+    }
+  }
+  
