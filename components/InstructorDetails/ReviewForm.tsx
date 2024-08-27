@@ -11,17 +11,17 @@ import { UpdateSingleInstructor } from "@/lib/Helper/UpdateSingleInstructor";
 export default function ReviewForm({ id }: { id: string }) {
   const user = useAppSelector((state) => state.userReduicer.user);
   const [reviews, setReviews] = useState<any[]>([]);
-  const [desc,setDesc]=useState("")
+  const [desc,setDesc]=useState<string|undefined>("")
   const [star,setStar]=useState(0)
 
   useEffect(() => {
-    getSingleInstructor(id, true).then((res) => {
+    getSingleInstructor(id, true).then((res:InstructorType) => {
       if (res) {
         setReviews(res.ratings);
-      const data= res.ratings.length && res.ratings.find(data=>data.user==user?._id)
+      const data:review|undefined|0= res.ratings.length ? res.ratings.find(data=>data.user==user?._id):{desc:"",star:"",user:""}
       let str = data?.desc
       setDesc(str?.toString())
-      setStar(parseInt(data?.star))
+      setStar(parseInt(data?.star||""))
       }
     });
   }, []);

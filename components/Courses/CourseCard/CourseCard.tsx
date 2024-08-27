@@ -25,8 +25,8 @@ export interface CourseType{
     certifications?:boolean,
     lessons?:number,
     promocodes?:Promo[],
-    pendingStudents:string[],
-    courseStudents:string[],
+    pendingStudents?:string[],
+    courseStudents?:string[],
 
 }
 export default function CourseCard({image,name,desc,rate=0,duration,type,_id,price,level,instructor}:CourseType) {

@@ -3,16 +3,35 @@ import React from 'react'
 import { FaLock } from 'react-icons/fa'
 import PaymentBox from './PaymentBox'
 import Details from './Details'
-import { useAppSelector } from '@/lib/hooks/Hooks'
-import { cartItem } from '@/lib/Store/features/CartSlice'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks/Hooks'
+import { cartItem, deleteCartData } from '@/lib/Store/features/CartSlice'
 import { makePrice } from '../Common/Cart'
 import LoadingButton from '../Common/Button/Button'
+import { EnrollCourse } from '@/lib/Helper/EnrollCourse'
+import toast from 'react-hot-toast'
 
 export default function CheckoutContainer({id}:{id:string}) {
     const cartdata = useAppSelector(state=>state.cartReduicer.cartData)
+    const user = useAppSelector(state=>state.userReduicer.user)
+    const dispatch = useAppDispatch()
     const data:cartItem[] = id ? cartdata.filter(item=>item._id==id) : cartdata
     const price = makePrice(data)
-  
+  async function Enroll() {
+   
+    
+    const res = await EnrollCourse({
+      courseId:id,
+      userId:user?._id
+    })
+    if(res.isOk){
+      toast.success(res.massage)
+      dispatch(deleteCartData(data[0].cartId))
+
+    }else{
+      toast.error(res.massage)
+    }
+    
+  }
   return (
     <div className='container'>
     <div className=' flex md:flex-row flex-col-reverse gap-4'>
@@ -24,7 +43,7 @@ export default function CheckoutContainer({id}:{id:string}) {
             <PaymentBox />
         </div>:""}
         <div>
-            {price ?<LoadingButton className='py-3 w-full bg-primary text-white'>Place Order</LoadingButton>:<LoadingButton className='py-3 w-full bg-primary text-white'>Enroll for free</LoadingButton>}
+            {price ?<LoadingButton className='py-3 w-full bg-primary text-white'>Place Order</LoadingButton>:<LoadingButton onClick={Enroll} className='py-3 w-full bg-primary text-white'>Enroll for free</LoadingButton>}
         </div>
         </div>
       </div>

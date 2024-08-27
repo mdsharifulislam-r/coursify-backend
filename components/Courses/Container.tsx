@@ -3,7 +3,7 @@ import TopSecton from "./SideBar/TopSecton";
 import CourseCard, { CourseType } from "./CourseCard/CourseCard";
 import { getCourse } from "@/lib/Helper/getCourse";
 import { searchObject } from "@/app/(pages)/courses/page";
-import useFilterCourse from "../Hooks/useFilterCourse";
+
 import filterCourses from "../Hooks/filterCourses";
 import { getStudentInfo } from "@/lib/Helper/getStudent";
 import { cookies } from "next/headers";

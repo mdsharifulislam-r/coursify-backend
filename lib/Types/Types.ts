@@ -11,8 +11,8 @@ export interface Student{
     password:string,
     phone:string,
     image:string,
-    courseCollections:CourseType[],
-    pendingCourses:CourseType[],
+    courseCollections:string[],
+    pendingCourses:string[],
     isSocialLogin:isSocialLogin,
     intrestTypes:string[]
 }

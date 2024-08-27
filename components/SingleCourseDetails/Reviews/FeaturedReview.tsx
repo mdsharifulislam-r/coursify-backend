@@ -49,7 +49,7 @@ export default function FeaturedReview({reviews}:{reviews:review[]}) {
     user={item.user}
     star={item.star||""}
     desc={item.desc}
-
+    key={Math.random()}
     />
   })
   return (
