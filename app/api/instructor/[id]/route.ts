@@ -102,7 +102,7 @@ export async function PUT(Request:NextRequest){
     }
     const match = await InstructorModel.findOne({_id:id})
     const found = await InstructorModel.findOne({email:formData.email})
-    if(found && formData.email == match.email){
+    if(found && formData.email !== match.email){
       return NextResponse.json({
         isOk: false,
         massage: "Email already used",

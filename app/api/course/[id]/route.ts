@@ -10,7 +10,7 @@ export async function GET(Request: Request, { params }: Params) {
   try {
     const { id } = params;
     if (id) {
-      const singleCourse = await CourseModel.findOne({ _id: id });
+      const singleCourse = await CourseModel.findOne({ _id: id },{promocodes:0});
       if (singleCourse) {
         return NextResponse.json(
           {

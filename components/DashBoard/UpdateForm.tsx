@@ -15,7 +15,7 @@ import { getStudentInfoClient } from "@/lib/Helper/GetStudentInfoClient";
 import { UpdateStudentInfo } from "@/lib/Helper/UpdateStudentInfo";
 function TextField({ field, value }: { field: string; value: string }) {
   return (
-    <div className="flex justify-between w-full p-4 text-xl">
+    <div className="flex justify-between w-full p-4 lg:text-xl md:text-base text-sm">
       <span className="w-[40%] text-slate-600">{field}</span>
       <span className="w-[60%] text-slate-600">{value}</span>
     </div>

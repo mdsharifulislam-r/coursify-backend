@@ -40,7 +40,7 @@ export default async function TextBox({data}:{data:InstructorType}) {
         <p className="text-slate-700 pt-2">Phone:{data?.phone}</p>
       </div>
       <div>
-        <FeaturedReview reviews={data.ratings}/>
+        <FeaturedReview reviews={data.ratings} id={data._id}/>
       </div>
       <div className="w-full block md:hidden">
         <ReviewForm id={data._id}/>

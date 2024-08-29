@@ -1,32 +1,32 @@
-
+"use server"
 import { cookies } from "next/headers";
 import jwt from 'jwt-simple'
+import { revalidateTag } from "next/cache";
 
-export async function getStudentInfo(word?:string[]|undefined,id?:string) {
+export async function getStudentClient(word?:string[]|undefined,id?:string) {
     try {
-        const token = cookies().get('token')?.value
+       
+     
         
-        
-        if(token){
             const path = word?.toString()||'single'
+            const token = jwt.encode(id,process.env.NEXT_PUBLIC_JWT_SECRET||"")
+       
+            
           
             
-            const res = await fetch(`${process.env.BASE_URL}/student/${path}`,{
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/student/${path}`,{
                 headers:{
-                    "Cookie" : `token=${jwt.encode(id,process.env.JWT_SECRET||"")||token}`
+                    "Cookie" : `token=${token}`
                 },
                 method:"GET",
-                cache:"no-store",
-                next:{
-                    tags:["getsudents"]
-                }
+                cache:"no-store"
               
             })
 
             const data = await res.json()  
             if(data.isOk){
-                const main = jwt.decode(data.data,process.env.JWT_SECRET||"")
-              
+                const main = jwt.decode(data.data,process.env.NEXT_PUBLIC_JWT_SECRET||"")
+              revalidateTag("allCourseTag")
                 
                 return main
                 
@@ -35,7 +35,7 @@ export async function getStudentInfo(word?:string[]|undefined,id?:string) {
                 return {}
             }         
 
-        }
+        
         
     } catch (error) {
        console.log(error);

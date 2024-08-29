@@ -17,8 +17,8 @@ export async function GET(Requset:NextRequest,{params}:{params:{id:string}}) {
     const token = cookies().get('token')?.value
    
     
-    
     const Id = jwt.decode(token||"",process.env.JWT_SECRET||"")
+    
     
     
     if (!id) {
@@ -164,16 +164,21 @@ export async function PUT(Request: NextRequest) {
     }
 
     const id = jwt.decode(token, process.env.JWT_SECRET || "");
+    console.log(id);
+    
     const data: { from: string; dataObject: any} = jwt.decode(
       payload,
       process.env.JWT_SECRET || ""
     );
+    console.log(data);
+    
     if (data.from !== "my-web") {
       return NextResponse.json({
         isOk: false,
         massage: "UnAuthorized try",
       });
     }
+    if(data.dataObject.email){
     const match = await StudentModel.findOne({_id:id})
     const found = await StudentModel.findOne({email:data.dataObject.email})
     if(found && (data.dataObject.email !== match.email)){
@@ -182,7 +187,8 @@ export async function PUT(Request: NextRequest) {
         massage: "Email already used",
       });
     }
-    const res = await StudentModel.findByIdAndUpdate(id, data.dataObject);
+  }
+  const res = await StudentModel.findByIdAndUpdate(id, data.dataObject);
 
     if (res) {
      
@@ -208,9 +214,7 @@ export async function PUT(Request: NextRequest) {
         }
       );
     }
-    return NextResponse.json({
-      massage: "",
-    });
+
   } catch (error) {
     console.log(error);
     NextResponse.json(

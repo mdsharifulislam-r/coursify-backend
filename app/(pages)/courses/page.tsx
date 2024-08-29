@@ -31,11 +31,7 @@ export default function AboutPage({searchParams,params}:any) {
         
         for(let data of catagories){
             
-            
-            
             if(data.split(" ").join("_").toLowerCase()==i){
-               
-                
                 searchObject.catagories.push(i)
             }
         }

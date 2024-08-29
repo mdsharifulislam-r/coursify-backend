@@ -1,11 +1,14 @@
 import { getStorLocal, setStorLocal } from "@/lib/hooks/LoacalHooks"
-import { Student } from "@/lib/Types/Types"
+import { InstructorType, review, Student } from "@/lib/Types/Types"
 import { createSlice } from "@reduxjs/toolkit"
 
 const localData:Student|null = getStorLocal("user")
+const localRatings:review[]|null = getStorLocal("ratings")
+
 const initialState = {
     user:localData,
-    type:"student"
+    type:"student",
+    ratings:localRatings
 }
 
 export const userSlice = createSlice({
@@ -20,8 +23,12 @@ export const userSlice = createSlice({
             state.user=null
             setStorLocal('user',null)
         },
-        // setUserType:(state,action)
+        setRatings:(state,action)=>{
+            state.ratings=action.payload
+            setStorLocal('ratings',action.payload)
+        }
+
     }
 })
 
-export const {signInUser,Logout} = userSlice.actions
+export const {signInUser,Logout,setRatings} = userSlice.actions

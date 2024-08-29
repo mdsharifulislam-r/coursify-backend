@@ -34,7 +34,7 @@ export interface InstructorType{
     password:string,
     phone:string,
     image:string,
-    courseCollection:CourseType[],
+    courseCollection:string[],
     desc:string,
     isSocialLogin:isSocialLogin,
     intrestTypes:string[],
