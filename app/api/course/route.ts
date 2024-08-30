@@ -156,3 +156,34 @@ export async function GET(Request: Request) {
 }
 
 
+export async function PUT(Request:Request) {
+  try {
+    const {payload,id}:{payload:string,id:string} = await Request.json()
+    if(!payload && !id){
+      return NextResponse.json({
+        isOk:false,
+        massage:"Invalid credintials"
+    },{status:200})
+    }
+    const data = jwt.decode(payload,process.env.JWT_SECRET||"")
+    const res = await CourseModel.findByIdAndUpdate(id,data)
+    if(res){
+      return NextResponse.json({
+        isOk:true,
+        massage:"update successfully"
+    },{status:200})
+    }else{
+      return NextResponse.json({
+        isOk:false,
+        massage:"Data not found"
+    },{status:404})
+    }
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({
+      isOk:false,
+      massage:"Something went wrong"
+  },{status:400})
+    
+  }
+}

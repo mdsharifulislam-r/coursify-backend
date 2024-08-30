@@ -1,4 +1,5 @@
 
+
 import { cookies } from "next/headers";
 import jwt from 'jwt-simple'
 
@@ -7,7 +8,7 @@ export async function getStudentInfo(word?:string[]|undefined,id?:string) {
         const token = cookies().get('token')?.value
         
         
-        if(token){
+      
             const path = word?.toString()||'single'
           
             
@@ -35,7 +36,7 @@ export async function getStudentInfo(word?:string[]|undefined,id?:string) {
                 return {}
             }         
 
-        }
+        
         
     } catch (error) {
        console.log(error);

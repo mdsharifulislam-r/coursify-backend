@@ -12,7 +12,7 @@ import SeeAllLink from "./SeeAllLink";
 import ReviewItem from "./ReviewIten";
 
 export default function FeaturedReview({reviews,id}:{reviews:review[],id:string}) {
-  const data = reviews?.map(item=>{
+  const data = reviews?.reverse().map(item=>{
     return <ReviewItem
     user={item.user}
     star={item.star||""}

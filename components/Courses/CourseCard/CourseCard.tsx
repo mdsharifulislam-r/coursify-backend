@@ -1,4 +1,5 @@
 import { Promo } from '@/app/api/promo/promocourse/route'
+import { review } from '@/lib/Types/Types'
 import { Span } from 'next/dist/trace'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,7 +18,7 @@ export interface CourseType{
     level:string,
     language?:string,
     instructor:{name:string,id:string},
-    ratings?:object[],
+
     promovideo?:string,
     module?:any,
     price:string,
@@ -27,6 +28,7 @@ export interface CourseType{
     promocodes?:Promo[],
     pendingStudents?:string[],
     courseStudents?:string[],
+    ratings?:review[]
 
 }
 export default function CourseCard({image,name,desc,rate=0,duration,type,_id,price,level,instructor}:CourseType) {

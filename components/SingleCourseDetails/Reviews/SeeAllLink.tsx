@@ -15,6 +15,6 @@ export default function SeeAllLink({ratings,id}:{ratings:review[],id:string}) {
         dispatch(setRatings(ratings))
     }
   return (
-    <Link href={`/ratings?${id}`} onClick={SetRatingsData} className="text-primary font-medium">See all reviews</Link>
+    <Link href={`/ratings?id=${id}`} onClick={SetRatingsData} className="text-primary font-medium">See all reviews</Link>
   )
 }

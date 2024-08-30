@@ -16,7 +16,7 @@ interface info{
 }
 export function InfoBox({icon,type,value}:info) {
   return (
-    <div className="flex justify-between place-items-center text-base py-2 border-b  border-slate-300">
+    <div className="flex overflow-x-hidden justify-between place-items-center text-base py-2 border-b  border-slate-300">
       <div className="flex gap-2 place-items-center">
         {icon}
         {type}:

@@ -21,11 +21,11 @@ export default function Container({course}:Props) {
         />
         <Content
         data='Instructor'
-        content={<Instructor/>}
+        content={<Instructor course={course}/>}
         />
         <Content
         data='Reviews'
-        content={<Reviews/>}
+        content={<Reviews course={course}/>}
         />
   
 </div>

@@ -31,7 +31,7 @@ export default function LoginForm({ response }: { response?: responseData }) {
     const data = Object.fromEntries(new FormData(e.currentTarget));
     fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/${
-        response?.type !== "student" ? "instructor" : "student"
+        response?.type !== "student"  ? "instructor" : "student"
       }/login`,
       {
         method: "POST",

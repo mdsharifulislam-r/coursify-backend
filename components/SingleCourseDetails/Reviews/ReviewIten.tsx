@@ -3,14 +3,17 @@ import { getStudentInfo } from "@/lib/Helper/getStudent";
 import Image from "next/image";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import avater from "@/assets/Avatar/avatar.jpg"
+import { getSingleInstructor } from "@/lib/Helper/getSingleInstructor";
 interface props {
     user?:string
     star: string;
     desc?: string;
   }
   export default async function ReviewItem({ user, star, desc }: props) {
+    console.log(user);
     
-    const userInfo= await getStudentInfo(["image","name"],user)
+    const userInfo= await getStudentInfo(["image","name"],user) 
+    console.log(userInfo);
     
     
     const fillStar = new Array(parseInt(star)).fill(<FaStar key={Date.now()}/>);

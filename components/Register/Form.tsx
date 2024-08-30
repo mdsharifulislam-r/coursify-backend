@@ -117,7 +117,7 @@ export default function Form({response}:{response?:responseData}) {
                 type="radio"
                 name="type"
                 id="student"
-                defaultChecked
+                defaultChecked={true}
                 className="peer/student hidden "
                 value={"student"}
                 onChange={AddValue}
