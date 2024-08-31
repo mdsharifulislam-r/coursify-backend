@@ -19,7 +19,8 @@ export interface Student{
 export interface review{
     user?:string,
     desc?:string,
-    star?:string
+    star?:string,
+    date?:string,
 }
 interface socialLinks{
     facebook:string,

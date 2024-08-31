@@ -7,7 +7,7 @@ import SortRatings from '@/lib/Helper/SortRatings';
 export default function RatingsContainer({ratings,name,id,sort}:{ratings:review[],name:string,id:string,sort:string}) {
     const sortArray = SortRatings(ratings,sort)
     
-    console.log(sortArray);
+  
     
     const data = sortArray?.map(item=>{
     return <ReviewItem

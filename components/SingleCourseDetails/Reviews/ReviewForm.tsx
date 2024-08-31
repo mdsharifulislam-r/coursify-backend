@@ -21,6 +21,8 @@ export default function ReviewForm({ id }: { id: string }) {
   useEffect(() => {
     getSingleCourse(id,true).then((res:InstructorType) => {
         if (res) {
+
+          
           setReviews(res.ratings);
         const data:review|undefined|0= res.ratings?.length ? res.ratings?.find(data=>data.user==user?._id):{desc:"",star:"",user:""}
         let str = data?.desc
@@ -46,6 +48,7 @@ export default function ReviewForm({ id }: { id: string }) {
     const obj = {
       ...data,
       user: user?._id,
+      date:new Date().toDateString()
     };
     if (course?.ratings?.some((item) => item?.user == user?._id)) {
       const index = course?.ratings?.findIndex(data=>data.user==user?._id)
@@ -53,8 +56,8 @@ export default function ReviewForm({ id }: { id: string }) {
       rev[index]={
         ...obj,
         star:star.toString(),
-        desc:desc
-
+        desc:desc,
+        
       }
     const res = await updateCourse({ratings:rev}, id,true);
     if (res.isOk) {
@@ -76,7 +79,7 @@ export default function ReviewForm({ id }: { id: string }) {
     }
   }
   return (
-    <form action={SendReviews} className={`w-full pt-8`}>
+    <form action={SendReviews} className={`md:w-[90%] mx-auto pt-8`}>
       <div className="rating">
         <input
           type="radio"

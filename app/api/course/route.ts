@@ -6,6 +6,7 @@ import jwt from 'jwt-simple'
 import { cookies } from "next/headers";
 import { InstructoScema } from "@/lib/Database/instructorSchema/InstructorSchema";
 import { InstructorType } from "@/lib/Types/Types";
+import { revalidateTag } from "next/cache";
 ConnectDB()
 export async function POST(Request: Request) {
   try {
@@ -168,6 +169,7 @@ export async function PUT(Request:Request) {
     const data = jwt.decode(payload,process.env.JWT_SECRET||"")
     const res = await CourseModel.findByIdAndUpdate(id,data)
     if(res){
+      revalidateTag("singleCourse")
       return NextResponse.json({
         isOk:true,
         massage:"update successfully"

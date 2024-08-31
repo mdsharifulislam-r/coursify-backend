@@ -48,7 +48,8 @@ export default function ReviewForm({ id }: { id: string }) {
       rev[index]={
         ...obj,
         star:star.toString(),
-        desc:desc
+        desc:desc,
+      date:new Date().toDateString() 
 
       }
  

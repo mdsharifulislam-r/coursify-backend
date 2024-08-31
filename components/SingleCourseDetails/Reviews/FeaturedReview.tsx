@@ -18,6 +18,7 @@ export default function FeaturedReview({reviews,id}:{reviews:review[],id:string}
     star={item.star||""}
     desc={item.desc}
     key={Math.random()}
+    date={item?.date}
     />
   })
   return (

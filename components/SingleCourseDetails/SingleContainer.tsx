@@ -7,6 +7,7 @@ import { CourseType } from '../Courses/CourseCard/CourseCard'
 import SimilerCourse from './SimilerCourse'
 import Title from '../Common/Title'
 import { ModulePropsType } from './Curriculum/Module'
+import PromoVideoBox from './PromoVideoBox'
 interface props{
   Course:Promise<CourseType>
 }
@@ -18,6 +19,7 @@ return (
       <div className="container flex lg:flex-row  flex-col gap-8">
         <Container course={course} />
         <SideBar course={course}/>
+        <PromoVideoBox promovideo={course?.promovideo||""}/>
       </div>
       <Suspense fallback={'loading...'}>
         <Title heading='Course for you' tagline='You may like them also'/>

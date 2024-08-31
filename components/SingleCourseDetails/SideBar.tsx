@@ -9,6 +9,7 @@ import { SlBadge } from "react-icons/sl";
 import { CourseType } from "../Courses/CourseCard/CourseCard";
 import AddCartButton from "./AddCartButton/AddCartButton";
 import BuyNowButton from "./BuyNowButton/BuyNowButton";
+import PromoVideoBox from "./PromoVideoBox";
 interface info{
     icon:any,
     type:string,
@@ -35,7 +36,9 @@ export default function SideBar({course}:Props) {
     <div className="lg:w-[30%]  w-full border-[3px] p-3 shadow-2xl lg:-translate-y-80  bg-white border-primary  rounded-lg">
       <div className="imageBox relative w-full min-h-48 max-h-48  rounded-md overflow-hidden">
         <div className="absolute w-full h-full top-0 left-0 flex justify-center place-items-center">
-          <div className="p-4 text-2xl z-20 text-secondary bg-white rounded-full">
+          <div className="p-4 text-2xl z-20 text-secondary bg-white rounded-full relative">
+          <label htmlFor="my_modal_7" className="btn absolute w-full h-full left-0 top-0 opacity-0 "></label>
+
             <FaPlay />
           </div>
         </div>
@@ -44,7 +47,7 @@ export default function SideBar({course}:Props) {
           alt=""
           width={1000}
           height={1000}
-          src={course.image}
+          src={course?.image}
           className="absolute z-0 w-full h-full left-0 top-0 object-cover"
         />
       </div>
@@ -54,39 +57,40 @@ export default function SideBar({course}:Props) {
             <InfoBox
             icon={<BsCashCoin/>}
             type="Price"
-            value={`${course.price !== 'free' ? `$${course.price}`:course.price}`}
+            value={`${course?.price !== 'free' ? `$${course?.price}`:course?.price}`}
             />
             <InfoBox
             icon={<FaUser/>}
             type="Instructor"
-            value={course.instructor.name}
+            value={course?.instructor?.name}
             />
             <InfoBox
             icon={<FaRegClock/>}
             type="Duration"
-            value={course.duration}
+            value={course?.duration}
             />
             <InfoBox
             icon={<ImBooks/>}
             type="Lessons"
-            value={`${course.lessons}`}
+            value={`${course?.lessons}`}
             />
             <InfoBox
             icon={<FaUsers/>}
             type="Students"
-            value={`${course.student}`}
+            value={`${course?.student}`}
             />
             <InfoBox
             icon={<FaGlobe/>}
             type="Language"
-            value={`${course.language}`}
+            value={`${course?.language}`}
             />
             <InfoBox
             icon={<SlBadge/>}
             type="Certifications:"
-            value={`${course.certifications?"Yes":"No"}`}
+            value={`${course?.certifications?"Yes":"No"}`}
             />
         </div>
+     
         <div className="button w-full">
           <BuyNowButton course={course}/>
             <AddCartButton course={course}/>

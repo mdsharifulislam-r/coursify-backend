@@ -50,7 +50,7 @@ export async function GET(Requset:NextRequest,{params}:{params:{id:string}}) {
 export async function POST(Request: Request) {
   try {
     const { email, password, isSocialLogin }: Student = await Request.json();
-    console.log(email, password, isSocialLogin);
+
 
     const data: Student | null = await StudentModel.findOne({ email: email });
     if (data) {
@@ -86,7 +86,7 @@ export async function POST(Request: Request) {
         }
       } else {
         if (email) {
-        console.log(email);
+
         
        
           const newData: Student | null = await StudentModel.findOne(
@@ -94,7 +94,6 @@ export async function POST(Request: Request) {
           
           );
 
-          console.log(newData);
           
           
           const token = jwt.encode(newData?._id, process.env.JWT_SECRET || "");
@@ -164,14 +163,12 @@ export async function PUT(Request: NextRequest) {
     }
 
     const id = jwt.decode(token, process.env.JWT_SECRET || "");
-    console.log(id);
+  
     
     const data: { from: string; dataObject: any} = jwt.decode(
       payload,
       process.env.JWT_SECRET || ""
-    );
-    console.log(data);
-    
+    );    
     if (data.from !== "my-web") {
       return NextResponse.json({
         isOk: false,
@@ -202,7 +199,7 @@ export async function PUT(Request: NextRequest) {
         }
       );
     } else {
-      console.log(res);
+ 
 
       return NextResponse.json(
         {

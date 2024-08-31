@@ -8,15 +8,15 @@ interface props {
     user?:string
     star: string;
     desc?: string;
+    date?:string
   }
-  export default async function ReviewItem({ user, star, desc }: props) {
-    console.log(user);
+  export default async function ReviewItem({ user, star, desc,date}: props) {
+
     
     const userInfo= await getStudentInfo(["image","name"],user) 
-    console.log(userInfo);
-    
-    
-    const fillStar = new Array(parseInt(star)).fill(<FaStar key={Date.now()}/>);
+
+    const array = 
+    const fillStar = new Array(parseInt(star)||2).fill(<FaStar key={Date.now()}/>);
     const regStar = new Array(5 - parseInt(star)).fill(<FaRegStar key={Date.now()} />);
     return (
       <div className="flex gap-6 py-6 w-full border-b">
@@ -35,7 +35,8 @@ interface props {
             {fillStar}
             {regStar}
           </div>
-          <div className="desc py-3 text-justify text-xs md:text-sm text-slate-700">
+          <div className="text-xs pt-2  font-extralight">{date?date:new Date().toDateString()}</div>
+          <div className="desc pt-1 text-justify text-xs md:text-sm text-slate-700">
             {desc}
           </div>
         </div>
