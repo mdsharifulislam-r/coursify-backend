@@ -8,7 +8,7 @@ import { AiOutlineSound } from "react-icons/ai";
 function LinkItem({icon,text,id,type}:{icon:any,text:string,id:string,type:string}){
   const link = text?.split(" ")?.join("_")?.toLowerCase()
   return (
-    <Link href={`/dashboard?id=${id}&type=${type}&text=${link}`} className='flex gap-3 py-2 border-b place-items-center cursor-pointer text-slate-600 hover:text-primary transition-all duration-500'>
+    <Link scroll={false} href={`/dashboard?id=${id}&type=${type}&text=${link}`} className='flex gap-3 py-2 border-b place-items-center cursor-pointer text-slate-600 hover:text-primary transition-all duration-500'>
       {icon}
       <span>{text}</span>
     </Link>

@@ -27,6 +27,7 @@ export default function Curriculam({course}:props) {
     key={index}
     courseId={course?._id}
     moduleId={item.moduleId}
+    dev={false}
     />
   })
   return (

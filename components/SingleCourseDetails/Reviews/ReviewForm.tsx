@@ -120,7 +120,7 @@ export default function ReviewForm({ id }: { id: string }) {
           value={5}
           className="mask mask-star-2 bg-primary"
           onChange={setStarValue}
-          
+          defaultChecked
         />
       </div>
 

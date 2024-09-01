@@ -13,14 +13,17 @@ interface props {
   export default async function ReviewItem({ user, star, desc,date}: props) {
 
     
-    const userInfo= await getStudentInfo(["image","name"],user) 
+    const userInfo= await getStudentInfo(["image","name"],user) ?? await getSingleInstructor(user||"")
 
-    const array = 
-    const fillStar = new Array(parseInt(star)||2).fill(<FaStar key={Date.now()}/>);
-    const regStar = new Array(5 - parseInt(star)).fill(<FaRegStar key={Date.now()} />);
+    const intStar = isNaN(parseInt(star))?0:parseInt(star)
+    console.log(intStar);
+    
+    
+    const fillStar = new Array(intStar).fill(<FaStar key={Date.now()}/>);
+    const regStar = new Array(5-intStar).fill(<FaRegStar key={Date.now()} />);
     return (
-      <div className="flex gap-6 py-6 w-full border-b">
-        <div className="imageBox w-[15%] md:h-28 h-16 rounded-lg relative overflow-hidden">
+      <div className="flex gap-6 py-4 my-2 rounded-md hover:shadow-lg transition-all duration-300 w-full border cursor-pointer px-4">
+        <div className="imageBox w-[10%] md:h-28 h-10 rounded-lg relative overflow-hidden">
           <Image
             src={userInfo?.image||avater}
             width={1000}
@@ -30,7 +33,7 @@ interface props {
           />
         </div>
         <div className="textBox w-[80%]">
-          <h1 className="text-xl font-semibold pb-3">{userInfo?.name||"name"}</h1>
+          <h1 className="md:text-xl text-sm font-semibold pb-3">{userInfo?.name||"name"}</h1>
           <div className="flex place-items-center text-orange ">
             {fillStar}
             {regStar}

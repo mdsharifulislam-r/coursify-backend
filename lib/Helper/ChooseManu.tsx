@@ -1,5 +1,6 @@
 import DashBoard from '@/components/DashBoard/InstrutorDashBoard/DashBoard';
 import EnrollStudents from '@/components/DashBoard/InstrutorDashBoard/EnrollStudents';
+import MyCourse from '@/components/DashBoard/InstrutorDashBoard/MyCoursees/MyCourse';
 import Reviews from '@/components/DashBoard/InstrutorDashBoard/Reviews';
 import UpdateForm from '@/components/DashBoard/UpdateForm';
 import React from 'react'
@@ -14,6 +15,8 @@ switch (text) {
         return <EnrollStudents userId={id}/>
     case "reviews":
         return <Reviews id={id}/>
+    case "my_courses":
+        return <MyCourse id={id}/>
 
     default:
         return <DashBoard/>

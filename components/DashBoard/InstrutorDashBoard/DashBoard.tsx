@@ -6,7 +6,7 @@ import { CiStar } from 'react-icons/ci';
 function Item({icon,amount,title}:{icon:any,amount:number,title:string}){
     return(
         <div className='bg-teal-50 w-full group flex-col py-10  p-5 flex justify-center place-items-center rounded-md shadow-lg'>
-            <div className='p-10 group-hover:shadow-lg transition-all duration-500 text-2xl rounded-full bg-teal-100 text-primary'>
+            <div className='p-10 group-hover:shadow-lg transition-all popUp duration-500 text-2xl rounded-full bg-teal-100 text-primary'>
                 {icon}
             </div>
             <h1 className='text-primary text-3xl py-4'>{amount}</h1>

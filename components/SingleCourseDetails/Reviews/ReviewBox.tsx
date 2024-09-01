@@ -18,7 +18,7 @@ function Info({star,percent=0}:props){
             <div className='w-[80%] py-1 bg-dark rounded-lg relative overflow-hidden'>
                 <div style={{width:percent+"%"}} className='absolute h-full top-0 left-0 bg-orange'></div>
             </div>
-            <span className='w-[10%] md:text-base text-sm'>{percent || 0}%</span>
+            <span className='w-[10%] md:text-base text-sm'>{percent.toFixed(2) || 0}%</span>
 
         </div>
     )
@@ -26,14 +26,11 @@ function Info({star,percent=0}:props){
 export default function ReviewBox({ratings}:{ratings:review[]}) {
   const avarage =  AvarageRatings(ratings)
  
-  
-
-  
    
   return (
     <div className='flex gap-3 w-full place-items-center'>
       <div className="box w-[30%] shadow-lg py-7 rounded-lg border border-primary flex-col place-items-center gap-3 flex justify-center">
-        <h1 className='md:text-4xl text-2xl'>{avarage.toFixed(1)!=="NaN"?avarage.toFixed(1):0}</h1>
+        <h1 className='md:text-4xl text-2xl'>{!isNaN(avarage)?avarage.toFixed(1):0}</h1>
         <AvarageStar ratings={ratings}/>
         <span className='md:text-sm text-xs font-light'>Course Ratings</span>
       </div>

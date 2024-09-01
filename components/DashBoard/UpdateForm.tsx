@@ -94,7 +94,7 @@ export default function UpdateForm({ id, type }: { id: string; type: string }) {
   }
   return (
  
-    <div className="md:p-5">
+    <div className="md:p-5 popUp">
       <div>
         <h1 className="text-black font-bold text-xl pb-4 border-b">
           My Profile
