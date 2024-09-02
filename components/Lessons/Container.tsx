@@ -28,14 +28,15 @@ export default async function Container({courseId,moduleId,videoId}:LessonsProps
  
   
   return (
-    <div className="lg:w-[70%] w-full p-4">
+    <div className="md:w-[50%] w-full p-4">
       <div className="header">
         <h1 className="title text-3xl flex justify-center place-items-center py-5 font-semibold border-b">{data?.text}</h1>
-        <p className="text-slate-600 text-justify text-sm py-3">
-         {data?.desc}
-        </p>
+     
       </div>
       <Videoframe videoLinks={data?.videolink}/>
+      <div className=""> <p className="text-slate-600 text-justify text-sm py-3">
+         {data?.desc}
+        </p></div>
       <SendMassageBox/>
     </div>
   );

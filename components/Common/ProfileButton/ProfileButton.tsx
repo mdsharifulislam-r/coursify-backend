@@ -6,8 +6,10 @@ import Image from "next/image"
 import toast from "react-hot-toast"
 import avater from '@/assets/Avatar/avatar.jpg'
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 export default function ProfileButton() {
   const dispatch = useAppDispatch()
+  const router = useRouter()
   async function logout(){
     toast.promise(fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/student/logout`,{
       method:"DELETE"
@@ -24,6 +26,7 @@ export default function ProfileButton() {
 
     if(data.isOk){
       dispatch(Logout())
+      router.push("/")
     }
     
   }

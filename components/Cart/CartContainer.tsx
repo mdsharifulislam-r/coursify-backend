@@ -4,8 +4,12 @@ import CartItemBox from "./CarItemBox";
 import { makePrice } from "../Common/Cart";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { cartItem } from "@/lib/Store/features/CartSlice";
 export default function CartContainer() {
     const cartData = useAppSelector(state=>state.cartReduicer.cartData)
+    const [Item,setItem]=useState<cartItem | null>(null)
+
+    
     const Cartitem = cartData?.map(item=>{
         return <CartItemBox
         image={item.image}
@@ -17,6 +21,7 @@ export default function CartContainer() {
         type={item.type}
         amount={item.amount}
         key={item.cartId}
+        setItem={setItem}
         />
     })
     const [price,setPrice]=useState(makePrice(cartData))
@@ -47,6 +52,7 @@ export default function CartContainer() {
         })
       }
     }
+    
   return (
     <div className="container">
       <div className=" ">
@@ -81,7 +87,7 @@ export default function CartContainer() {
               <span className="font-semibold text-sm uppercase">Items {cartData?.length}</span>
               <span className="font-semibold text-sm">{makePrice(cartData)}$</span>
             </div>
-            <div>
+            {Item?.type !== 'course' && <div>
               <label className="font-medium inline-block mb-3 text-sm uppercase">
                 Shipping
               </label>
@@ -90,7 +96,7 @@ export default function CartContainer() {
                 <option value={10}>Standard shipping - $10.00</option>
                 <option value={30}>Standard shipping - $10.00</option>
               </select>
-            </div>
+            </div>}
             <div className="py-10">
               <label
                 htmlFor="promo"

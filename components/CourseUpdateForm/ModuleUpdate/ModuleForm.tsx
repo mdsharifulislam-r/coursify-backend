@@ -10,6 +10,7 @@ import { CourseType } from '@/components/Courses/CourseCard/CourseCard';
 import { getSingleCourse } from '@/lib/Helper/getSingleCourse';
 import { updateCourse } from '@/lib/Helper/UpdateCourse';
 import toast from 'react-hot-toast';
+import { courseStatus } from './ModuleUpdate';
 export default function ModuleForm({courseId}:{courseId:string}) {
     console.log(courseId);
     
@@ -32,6 +33,9 @@ export default function ModuleForm({courseId}:{courseId:string}) {
     }
     const res = await updateCourse(obj,courseId,true)
     if(res.isOk){
+        setData([])
+        setindex(1)
+        courseStatus()
         toast.success(res.massage)
     }else{
         toast.error(res.massage)
@@ -55,7 +59,7 @@ export default function ModuleForm({courseId}:{courseId:string}) {
        <VideoForm index={index} setIndex={setindex} courseId={courseId} sendData={setData}/>
          <LoadingButton className='flex justify-center py-2 bg-primary text-white rounded-md w-full'>Submit Module</LoadingButton>
         </form>
-        <label htmlFor="moduleform" className=' absolute w-full h-full top-0 left-0 z-0'></label>
+        <label htmlFor="moduleform" className=' absolute w-full h-full top-0 left-0 z-0 cursor-pointer'></label>
      </div>
 
     </div>

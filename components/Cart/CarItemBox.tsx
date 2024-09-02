@@ -1,12 +1,13 @@
 'use client'
 import { useAppDispatch } from '@/lib/hooks/Hooks'
 import { addCartData, cartItem, deleteCartData } from '@/lib/Store/features/CartSlice'
+import { Dispatch } from '@reduxjs/toolkit'
 import Image from 'next/image'
-import React from 'react'
+import React, { SetStateAction } from 'react'
 import toast from 'react-hot-toast'
 import { FaRegHeart, FaRegTrashAlt, FaTrash } from 'react-icons/fa'
 
-export default function CartItemBox({_id,type,name,cartId,image,author,amount,price}:cartItem) {
+export default function CartItemBox({_id,type,name,cartId,image,author,amount,price,setItem}:cartItem&{setItem?:any}) {
     const dispatch = useAppDispatch()
     function AddData(){
         const obj:cartItem={
@@ -26,8 +27,26 @@ export default function CartItemBox({_id,type,name,cartId,image,author,amount,pr
         position:"bottom-center"
       })
     }
+    function SendData(){
+      const obj:cartItem={
+        name:name,
+        author:author,
+        _id:_id,
+        image:image,
+        cartId:cartId,
+        price:price,
+        type:type
+    }
+      setItem(obj)
+    }
   return (
-    <div className="md:flex w-full overflow-x-hidden items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
+    <div className="md:flex w-full overflow-x-hidden items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50 place-items-center">
+      <div className='px-3'>
+      <input onChange={SendData} type="radio" name="radio-5" className="radio radio-success" />
+      </div>
+
+
+      
     <div className="md:w-4/12 2xl:w-1/4 w-full">
       <Image
         src={image}

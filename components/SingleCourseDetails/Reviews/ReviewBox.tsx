@@ -18,7 +18,7 @@ function Info({star,percent=0}:props){
             <div className='w-[80%] py-1 bg-dark rounded-lg relative overflow-hidden'>
                 <div style={{width:percent+"%"}} className='absolute h-full top-0 left-0 bg-orange'></div>
             </div>
-            <span className='w-[10%] md:text-base text-sm'>{percent.toFixed(2) || 0}%</span>
+            <span className=' md:text-base text-[10px]'>{percent.toFixed(1) || 0}%</span>
 
         </div>
     )
