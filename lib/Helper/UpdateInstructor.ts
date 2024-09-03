@@ -21,7 +21,7 @@ export async function UpdateInstructor(formdata:FormData){
         ...data,
         secret:"my-web"
       }
-        console.log(data);
+
         
         const encode = jwt.encode(mainData,process.env.JWT_SECRET||"")
         const res = await fetch(`${process.env.BASE_URL}/instructor/update`,{
@@ -34,10 +34,10 @@ export async function UpdateInstructor(formdata:FormData){
             })
         })
         const datak = await res.json()
-        console.log(datak);
+  
         
         if(datak.isOk){
-            console.log(datak);
+     
             
             return{
                 isOk:true,

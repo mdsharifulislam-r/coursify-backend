@@ -8,6 +8,8 @@ import SimilerCourse from './SimilerCourse'
 import Title from '../Common/Title'
 import { ModulePropsType } from './Curriculum/Module'
 import PromoVideoBox from './PromoVideoBox'
+import dynamic from 'next/dynamic'
+
 interface props{
   Course:Promise<CourseType>
 }

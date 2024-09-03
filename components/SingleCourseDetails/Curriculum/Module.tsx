@@ -3,11 +3,12 @@ import React from "react";
 import { IoMdLock } from "react-icons/io";
 import { BsPlayCircle } from "react-icons/bs";
 import { IoIosEye } from "react-icons/io";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaTrash } from "react-icons/fa";
 import AddVideo from "@/components/CourseUpdateForm/ModuleUpdate/Addvideo";
 import { cookies } from "next/headers";
 import { useAppSelector } from "@/lib/hooks/Hooks";
 import ModuleLink from "./ModuleLink";
+import ModuleDelete from "@/components/CourseUpdateForm/ModuleUpdate/Delete/ModuleDelete";
 export interface ModuleLinkPropsType {
   text: string;
   videolink?: string;
@@ -45,18 +46,23 @@ export default function Module({open,title,data,courseId,moduleId,dev}:ModulePro
     // }
 
   })
+
   return (
     <>
       <div className="collapse collapse-plus border rounded-md">
         <input type="radio" name="my-accordion-3" defaultChecked={open} />
-        <div className="collapse-title text-sm font-medium">
+        <div className="collapse-title text-sm font-medium flex gap-2">
           {title}
         </div>
         <div className="collapse-content flex flex-col gap-4">
          {ModuleLinkData}
-         <div>
+         <div className="flex gap-3">
     {dev &&<label  htmlFor={moduleId} className="flex justify-center gap-3 place-items-center w-full cursor-pointer text-primary"><FaPlus/> Add Video</label>}
+    {dev && 
+            <label htmlFor={moduleId+"delete"} className="text-red-500 place-items-center cursor flex text-sm cursor-pointer"><FaTrash/> Delete </label>
+    }
     <AddVideo courseId={courseId||""} moduleId={moduleId||""}/>
+    <ModuleDelete moduleId={moduleId||""} courseId={courseId||""}/>
     </div>
         </div>
       </div>

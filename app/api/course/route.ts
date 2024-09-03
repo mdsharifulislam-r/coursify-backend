@@ -51,21 +51,6 @@ export async function POST(Request: Request) {
       promocodes,
       module
     } = data
-    console.log(name,
-      image,
-      instructor,
-      language,
-      lessons,
-      level,
-      desc,
-      type,
-      certifications,
-      price,
-      promovideo,
-      student,
-    duration,
-    promocodes,
-    module);
     
     if (
       name &&

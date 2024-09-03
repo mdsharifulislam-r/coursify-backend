@@ -9,7 +9,7 @@ import { getSingleCourse } from "@/lib/Helper/getSingleCourse";
 
 export default async function SideBar({courseId,videoId,moduleId}:LessonsProps){
   const course:CourseType = await getSingleCourse(courseId)
-  const myModule:ModulePropsType[] = course? [{
+  const myModule:ModulePropsType[] = course?.module?.length? [{
     title:"Promo Video",
     moduleId:"promo_module",
     data:[{
@@ -19,7 +19,17 @@ export default async function SideBar({courseId,videoId,moduleId}:LessonsProps){
       videoId:'promo',
       desc:"This is the promo video"
     }]
-  },...course?.module]:[]
+  },...course?.module]:[{
+    title:"Promo Video",
+    moduleId:"promo_module",
+    data:[{
+      text:"Promo Video",
+      videolink:course?.promovideo,
+      isLock:false,
+      videoId:'promo',
+      desc:"This is the promo video"
+    }]
+  }]
 
  
   const data = myModule?.map((item,index)=>{

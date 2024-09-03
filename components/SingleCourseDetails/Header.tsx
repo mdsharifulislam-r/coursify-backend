@@ -10,7 +10,7 @@ interface props{
 export default async function Header({Course}:props) {
     const course = await Course
     const starArr = new Array(5).fill(<FaStar key={Date.now()}/>)
-    console.log(course);
+  
     
   return (
     <div className='py-32 bg-dark mb-10 relative pointer-events-none'>

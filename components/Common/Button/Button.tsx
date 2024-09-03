@@ -26,6 +26,6 @@ export default function LoadingButton({isLoading=false,className,children,onClic
 
   }
   return (
-    <button onClick={onClick}  type='submit' style={{cursor:pending || isLoading?"not-allowed":"pointer"}} disabled={pending || isLoading?true:false} className={className}>{pending || isLoading?<ButtonLoader/>:children}</button>
+    <button onClick={onClick}  type='submit' style={{cursor:pending || isLoading?"progress":"pointer"}} disabled={pending || isLoading?true:false} className={className}>{pending || isLoading?<ButtonLoader/>:children}</button>
   )
 }

@@ -7,6 +7,10 @@ import { FaPlus, FaSubscript, FaVideo } from 'react-icons/fa'
 
 export default function VideoForm({index=1,setIndex,sendData,courseId}:{courseId:string,sendData:React.Dispatch<React.SetStateAction<ModuleLinkPropsType[]>>,index:number,setIndex:React.Dispatch<React.SetStateAction<number>>}) {
     function SubmitData(){
+        if(!formData.text && !formData.desc && !formData.videolink){
+            toast.error("Please fill all video data")
+            return
+        }
         const obj:ModuleLinkPropsType={
             ...formData,
             courseId,

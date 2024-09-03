@@ -5,7 +5,7 @@ interface props{
   course:CourseType
 }
 export default function Curriculam({course}:props) {
-  const myModule:ModulePropsType[] = course? [{
+  const myModule:ModulePropsType[] = course?.module?.length? [{
     title:"Promo Video",
     moduleId:"promo_module",
     data:[{
@@ -15,7 +15,17 @@ export default function Curriculam({course}:props) {
       videoId:'promo',
       desc:"This is the promo video"
     }]
-  },...course?.module]:[]
+  },...course?.module]:[{
+    title:"Promo Video",
+    moduleId:"promo_module",
+    data:[{
+      text:"Promo Video",
+      videolink:course?.promovideo,
+      isLock:false,
+      videoId:'promo',
+      desc:"This is the promo video"
+    }]
+  }]
 
   
  

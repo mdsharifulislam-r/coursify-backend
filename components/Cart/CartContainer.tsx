@@ -5,6 +5,7 @@ import { makePrice } from "../Common/Cart";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { cartItem } from "@/lib/Store/features/CartSlice";
+import Link from "next/link";
 export default function CartContainer() {
     const cartData = useAppSelector(state=>state.cartReduicer.cartData)
     const [Item,setItem]=useState<cartItem | null>(null)
@@ -119,9 +120,9 @@ export default function CartContainer() {
                 <span>Total cost</span>
                 <span>${price}</span>
               </div>
-              <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
+              <Link href={`/checkout?id=${Item?._id}`} className=" text-center block bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
                 Checkout
-              </button>
+              </Link>
             </div>
           </div>
         </div>

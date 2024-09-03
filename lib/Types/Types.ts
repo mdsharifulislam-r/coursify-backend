@@ -14,7 +14,8 @@ export interface Student{
     courseCollections:string[],
     pendingCourses:string[],
     isSocialLogin:isSocialLogin,
-    intrestTypes:string[]
+    intrestTypes:string[],
+    completeVideos:string[],
 }
 export interface review{
     user?:string,

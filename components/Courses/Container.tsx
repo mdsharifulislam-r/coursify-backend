@@ -48,6 +48,7 @@ export default async function Container({
             level={course.level}
             price={course.price}
             promocodes={course.promocodes}
+            ratings={course?.ratings}
           />
         );
       })

@@ -16,7 +16,7 @@ interface props {
     const userInfo= await getStudentInfo(["image","name"],user) ?? await getSingleInstructor(user||"")
 
     const intStar = isNaN(parseInt(star))?0:parseInt(star)
-    console.log(intStar);
+   
     
     
     const fillStar = new Array(intStar).fill(<FaStar key={Date.now()}/>);
